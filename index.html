@@ -13,11 +13,13 @@ function showNotification() {
 Notification.requestPermission(function(result) { 
 if (result === 'granted') { 
 navigator.serviceWorker.ready.then(function(registration) { 
-registration.showNotification('Vibration Sample', { 
-body: 'Buzz! Buzz!', 
-vibrate: [200, 100, 200, 100, 200, 100, 200], 
-tag: 'vibration-sample' 
-}); 
+const title = 'Notification 1 of 3';
+    const options = {
+      body: 'With \'tag\' of \'message-group-1\'',
+      tag: 'message-group-1'
+    };
+    registration.showNotification(title, options);
+
 }); 
 } 
 }); 
