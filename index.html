@@ -27,7 +27,7 @@ const title = 'Vibrate Notification';
 }); 
 }
 document.querySelector("button").addEventListener("click", showNotification);
-setTimeout(showNotification, 5000);
+var timerId = setInterval(showNotification, 5000);
   </script>
  </body>
 </html>
