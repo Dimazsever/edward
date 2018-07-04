@@ -18,7 +18,7 @@ const title = 'Vibrate Notification';
     const options = {
       // Star Wars shamelessly taken from the awesome Peter Beverloo
       // https://tests.peter.sh/notification-generator/
-      vibrate: [40,110,200,110,170,40,500]
+      vibrate: [110]
     };
     registration.showNotification(title, options);
 
@@ -27,6 +27,7 @@ const title = 'Vibrate Notification';
 }); 
 }
 document.querySelector("button").addEventListener("click", showNotification);
+var timerId = setInterval(showNotification,5000);
   </script>
  </body>
 </html>
