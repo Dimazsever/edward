@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Тег B</title>
+ </head>
+ <body>
+  <p><b>Lorem ipsum dolor sit amet</b></p>
+  <p><b>Lorem ipsum</b> dolor sit amet, consectetuer adipiscing elit, 
+  sed diem nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat 
+  volutpat. <b>Ut wisis</b> enim ad minim veniam, quis nostrud exerci 
+  tution ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+ </body>
+</html>
