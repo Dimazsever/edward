@@ -13,10 +13,12 @@ function showNotification() {
 Notification.requestPermission(function(result) { 
 if (result === 'granted') { 
 navigator.serviceWorker.ready.then(function(registration) { 
-const title = 'Notification 1 of 3';
+
+const title = 'Vibrate Notification';
     const options = {
-      body: 'With \'tag\' of \'message-group-1\'',
-      tag: 'message-group-1'
+      // Star Wars shamelessly taken from the awesome Peter Beverloo
+      // https://tests.peter.sh/notification-generator/
+      vibrate: [500,110,500,110,450,110,200,110,170,40,450,110,200,110,170,40,500]
     };
     registration.showNotification(title, options);
 
