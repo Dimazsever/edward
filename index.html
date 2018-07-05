@@ -9,28 +9,27 @@
   <script>
 navigator.serviceWorker.register('sw.js'); 
 
-function showNotification() { 
+function showNotification(x) { 
 Notification.requestPermission(function(result) { 
 if (result === 'granted') { 
 navigator.serviceWorker.ready.then(function(registration) { 
 
-const title = 'Vibrate Notification';
+var title = x;
     const options = {
       // Star Wars shamelessly taken from the awesome Peter Beverloo
       // https://tests.peter.sh/notification-generator/
-      body: 'With "requireInteraction: \'true\'".',
-      requireInteraction: true
+      tag: 'renotify',
+      renotify: true
     };
-    //registration.showNotification(title, options);
+    registration.showNotification(title, options);
 
 }); 
 } 
 }); 
 }
 document.querySelector("button").addEventListener("click", showNotification);
-var timerId = setInterval(function(){
-registration.showNotification(title, options);
-}, 4000);
+var txt = 'Ponzi';
+var timerId = setInterval(showNotification(txt), 4000);
   </script>
  </body>
 </html>
