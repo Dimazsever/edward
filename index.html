@@ -9,11 +9,13 @@
   <script>
 navigator.serviceWorker.register('sw.js'); 
 
-function showNotification(x) { 
+function showNotification() { 
 Notification.requestPermission(function(result) { 
 if (result === 'granted') { 
 navigator.serviceWorker.ready.then(function(registration) { 
 
+window.navigator.vibrate(200); 
+/*
 const title = 'Hello!';
     const options = {
       // Star Wars shamelessly taken from the awesome Peter Beverloo
@@ -21,6 +23,7 @@ const title = 'Hello!';
       vibrate: [40]
     };
     registration.showNotification(title, options);
+*/
 
 }); 
 } 
