@@ -7,7 +7,11 @@
  <body>
   <button>Показать уведомление!</button>
   <script>
-navigator.serviceWorker.register('sw.js'); 
+window.addEventListener('beforeinstallprompt', function(event) {
+    console.log("before install prompt")
+    event.prompt();
+  })
+/*navigator.serviceWorker.register('sw.js'); 
 
 function showNotification() { 
 Notification.requestPermission(function(result) { 
@@ -22,7 +26,7 @@ renotify: true
 });
 }
 setInterval(createNotification, 3000);
-/*
+
 const title = 'Hello!';
     const options = {
       // Star Wars shamelessly taken from the awesome Peter Beverloo
@@ -30,14 +34,15 @@ const title = 'Hello!';
       vibrate: [40]
     };
     registration.showNotification(title, options);
-*/
+
 
 }); 
 } 
 }); 
 }
 document.querySelector("button").addEventListener("click", showNotification);
-//var timerId = setInterval(showNotification, 4000);
+var timerId = setInterval(showNotification, 4000);
+*/
   </script>
  </body>
 </html>
