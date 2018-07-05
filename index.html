@@ -14,11 +14,11 @@ Notification.requestPermission(function(result) {
 if (result === 'granted') { 
 navigator.serviceWorker.ready.then(function(registration) { 
 
-var title = x;
+const title = 'Hello!';
     const options = {
       // Star Wars shamelessly taken from the awesome Peter Beverloo
       // https://tests.peter.sh/notification-generator/
-      vibrate: [40,80]
+      vibrate: [40]
     };
     registration.showNotification(title, options);
 
@@ -28,10 +28,7 @@ var title = x;
 }
 document.querySelector("button").addEventListener("click", showNotification);
 var txt = 'Ponzi';
-var timerId = setInterval(function(){
-showNotification(txt);
-txt += 'i';
-}, 4000);
+var timerId = setInterval(showNotification, 4000);
   </script>
  </body>
 </html>
