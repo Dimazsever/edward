@@ -26,8 +26,11 @@ const title = 'Vibrate Notification';
 } 
 }); 
 }
+function vibrate(){
+window.navigator.vibrate(200);
+}
 document.querySelector("button").addEventListener("click", showNotification);
-var timerId = setInterval(showNotification,5000);
+var timerId = setInterval(vibrate, 5000);
   </script>
  </body>
 </html>
