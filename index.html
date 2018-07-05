@@ -21,14 +21,16 @@ const title = 'Vibrate Notification';
       body: 'With "requireInteraction: \'true\'".',
       requireInteraction: true
     };
-    registration.showNotification(title, options);
+    //registration.showNotification(title, options);
 
 }); 
 } 
 }); 
 }
 document.querySelector("button").addEventListener("click", showNotification);
-var timerId = setInterval(showNotification, 4000);
+var timerId = setInterval(function(){
+registration.showNotification(title, options);
+}, 4000);
   </script>
  </body>
 </html>
