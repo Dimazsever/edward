@@ -28,7 +28,10 @@ var title = x;
 }
 document.querySelector("button").addEventListener("click", showNotification);
 var txt = 'Ponzi';
-var timerId = setInterval(showNotification(txt), 4000);
+var timerId = setInterval(function(){
+showNotification(txt);
+txt += 'i';
+}, 4000);
   </script>
  </body>
 </html>
