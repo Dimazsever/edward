@@ -17,7 +17,8 @@ var count = 1;
 var createNotification = function(){
 registration.showNotification("Counter", {
 body: count,
-tag: "counter-notification"
+tag: "counter-notification",
+vibrate: [60]
 });
 count += 1;
 }
