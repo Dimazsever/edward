@@ -13,14 +13,12 @@ function showNotification() {
 Notification.requestPermission(function(result) { 
 if (result === 'granted') { 
 navigator.serviceWorker.ready.then(function(registration) { 
-var count = 1;
 var createNotification = function(){
 registration.showNotification("Counter", {
-body: count,
+body: 'lalala',
 tag: "counter-notification",
 renotify: true
 });
-count += 1;
 }
 setInterval(createNotification, 3000);
 /*
