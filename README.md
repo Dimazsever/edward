@@ -1,1 +1,1 @@
-# dimazsever.github.io/ponzi
+# dimazsever.github.io
