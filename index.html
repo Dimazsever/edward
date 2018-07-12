@@ -14,16 +14,22 @@
       font-family: monospace
     }
 
-    #price {
+    #buy_price {
       font-size: 55px;
       font-family: monospace;
       color: #15ad05
     }
 
+    #sell_price {
+      font-size: 55px;
+      font-family: monospace;
+      color: #c10515
+    }
+
     #vol {
       font-size: 40px;
       font-family: monospace;
-      color: #c10515
+      color: #166cda
     }
   </style>
   <title>Всё будет Ponzi!</title>
@@ -32,7 +38,8 @@
 <body>
   <div>
     <h1>PT Ticker</h1>
-    <p id="price">Загрузка...</p>
+    <p id="buy_price">Загрузка...</p>
+    <p id="sell_price"> </p>
     <p id="vol"> </p>
   </div>
   <script>
@@ -40,7 +47,8 @@
     xhr.responseType = 'json';
     xhr.onload = function() {
       if (this.status == 200) {
-        document.querySelector("#price").innerText = "1 PT = " + xhr.response.last_trade + " ETH";
+        document.querySelector("#buy_price").innerText = "Buy Price " + xhr.response.buy_price + " ETH";
+        document.querySelector("#sell_price").innerText = "Sell Price " + xhr.response.sell_price + " ETH";
         document.querySelector("#vol").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
       }
     }
