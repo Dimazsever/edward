@@ -47,8 +47,10 @@
     xhr.responseType = 'json';
     xhr.onload = function() {
       if (this.status == 200) {
-        document.querySelector("#buy_price").innerText = "Buy Price " + xhr.response.buy_price + " ETH";
-        document.querySelector("#sell_price").innerText = "Sell Price " + xhr.response.sell_price + " ETH";
+        var buy = xhr.response.buy_price ? "Buy Price " + xhr.response.buy_price + " ETH" : "no price";
+        var sell = xhr.response.sell_price ? "Sell Price " + xhr.response.sell_price + " ETH" : "no price";
+        document.querySelector("#buy_price").innerText = buy;
+        document.querySelector("#sell_price").innerText = sell;
         document.querySelector("#vol").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
       }
     }
