@@ -5,56 +5,11 @@
   <title>Тег B</title>
  </head>
  <body>
-  <button>Показать уведомление!</button>
+<div>
+ <h1>PT Ticker</h1>
+</div>
   <script>
 document.querySelector("button").addEventListener('click', () => {
-  // Update the install UI to remove the install button
-  document.querySelector('#install-button').disabled = true;
-  // Show the modal add to home screen dialog
-  installPromptEvent.prompt();
-  // Wait for the user to respond to the prompt
-  installPromptEvent.userChoice.then((choice) => {
-    if (choice.outcome === 'accepted') {
-      console.log('User accepted the A2HS prompt');
-    } else {
-      console.log('User dismissed the A2HS prompt');
-    }
-    // Clear the saved prompt since it can't be used again
-    installPromptEvent = null;
-  });
-});
-/*navigator.serviceWorker.register('sw.js'); 
-
-function showNotification() { 
-Notification.requestPermission(function(result) { 
-if (result === 'granted') { 
-navigator.serviceWorker.ready.then(function(registration) { 
-var createNotification = function(){
-registration.showNotification("Counter", {
-body: 'lalala',
-tag: "counter-notification",
-vibrate: [40,30,40,30,40,30],
-renotify: true
-});
-}
-setInterval(createNotification, 3000);
-
-const title = 'Hello!';
-    const options = {
-      // Star Wars shamelessly taken from the awesome Peter Beverloo
-      // https://tests.peter.sh/notification-generator/
-      vibrate: [40]
-    };
-    registration.showNotification(title, options);
-
-
-}); 
-} 
-}); 
-}
-document.querySelector("button").addEventListener("click", showNotification);
-var timerId = setInterval(showNotification, 4000);
-*/
   </script>
  </body>
 </html>
