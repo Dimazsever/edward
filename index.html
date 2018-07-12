@@ -32,7 +32,7 @@
     xhr.responseType = 'json';
     xhr.onload = function() {
       if (this.status == 200) {
-        document.querySelector("p").innerText = "1 PT = '+xhr.response.ask_top+' ETH";
+        document.querySelector("p").innerText = "1 PT = "+xhr.response.ask_top+" ETH";
       }
     }
     xhr.open("GET", "https://ponzitrust.exchange/api/v1/order_book/", true);
