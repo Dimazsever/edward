@@ -26,17 +26,19 @@
 <body>
   <div>
     <h1>PT Ticker</h1>
-    <p>Загрузка...</p>
+    <p id="price">Загрузка...</p>
+    <p id="vol">Загрузка...</p>
   </div>
   <script>
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     xhr.onload = function() {
       if (this.status == 200) {
-        document.querySelector("p").innerText = "1 PT = "+xhr.response.ask_top+" ETH";
+        document.querySelector("#price").innerText = "1 PT = "+xhr.response.last_trade+" ETH";
+        document.querySelector("#vol").innerText = "Volume (24h) = "+xhr.response.vol+" ETH";
       }
     }
-    xhr.open("GET", "https://ponzitrust.exchange/api/v1/order_book/", true);
+    xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
     xhr.send();
   </script>
 </body>
