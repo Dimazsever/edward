@@ -41,7 +41,7 @@
     xhr.onload = function() {
       if (this.status == 200) {
         document.querySelector("#price").innerText = "1 PT = " + xhr.response.last_trade + " ETH";
-        document.querySelector("#vol").innerText = "Volume (24h) = " + parseInt(xhr.response.vol).toFixed(2) + " PT";
+        document.querySelector("#vol").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
       }
     }
     xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
