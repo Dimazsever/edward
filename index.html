@@ -14,10 +14,16 @@
       font-family: monospace
     }
 
-    p {
+    #price {
       font-size: 55px;
       font-family: monospace;
       color: #15ad05
+    }
+
+    #vol {
+      font-size: 55px;
+      font-family: monospace;
+      color: #c10515
     }
   </style>
   <title>Всё будет Ponzi!</title>
@@ -34,8 +40,8 @@
     xhr.responseType = 'json';
     xhr.onload = function() {
       if (this.status == 200) {
-        document.querySelector("#price").innerText = "1 PT = "+xhr.response.last_trade+" ETH";
-        document.querySelector("#vol").innerText = "Volume (24h) = "+xhr.response.vol+" ETH";
+        document.querySelector("#price").innerText = "1 PT = " + xhr.response.last_trade + " ETH";
+        document.querySelector("#vol").innerText = "Volume (24h) = " + xhr.response.vol + " ETH";
       }
     }
     xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
