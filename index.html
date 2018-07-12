@@ -26,7 +26,15 @@
     <p>Загрузка...</p>
   </div>
   <script>
-    //document.querySelector("button").addEventListener('click', () => {
+    var xhr = new XMLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      if (this.status == 200) {
+        document.querySelector("p").innerText = xhr.response.ask_top;
+      }
+    }
+    xhr.open("GET", "https://ponzitrust.exchange/api/v1/order_book/", true);
+    xhr.send();
   </script>
 </body>
 
