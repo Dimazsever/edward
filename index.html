@@ -78,7 +78,7 @@
             amount += parseFloat(xhr.response[i].amount);
             i++;
           }
-          document.querySelector("#vol_eth").innerText = "Volume (24h) = " + amount + " ETH";
+          document.querySelector("#vol_eth").innerHTML = "Volume (24h) = " + amount + " ETH";
         }
       }
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
