@@ -70,7 +70,7 @@
             amount += parseFloat(xhr.response[i].quantity);
             i++;
           }
-          console.log(xhr.response);
+          console.log(amount);
         }
       }
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
