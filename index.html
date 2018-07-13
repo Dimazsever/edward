@@ -53,7 +53,7 @@ console.log("Hi!");
         document.querySelector("#buy_price").innerText = buy;
         document.querySelector("#sell_price").innerText = sell;
         document.querySelector("#vol").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
-        get_vol();
+        //get_vol();
       }
     }
     xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
