@@ -59,8 +59,7 @@
         var sell = xhr.response.sell_price ? "Sell Price " + xhr.response.sell_price + " ETH" : "no price";
         document.querySelector("#buy_price").innerText = buy;
         document.querySelector("#sell_price").innerText = sell;
-        document.querySelector("#vol_pt").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
-        document.querySelector("#vol_eth").innerText = "идёт подсчёт...";
+        document.querySelector("#vol_pt").innerText = "идёт подсчёт...";
         setTimeout(get_vol, 2000);
       }
     }
@@ -71,14 +70,18 @@
       xhr.onload = function() {
         if (this.status == 200) {
           var now = new Date();
-          var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-          var timestamp = startOfDay / 1000;
-          var amount = 0,
+          //var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          //var timestamp = startOfDay / 1000;
+          var timestamp = (now.getTime() / 1000) - 86400;
+          var quantity = 0,
+            amount = 0,
             i = 0;
           while (xhr.response[i].date > timestamp) {
+            quantity += parseFloat(xhr.response[i].quantity);
             amount += parseFloat(xhr.response[i].amount);
             i++;
           }
+          document.querySelector("#vol_pt").innerText = "Volume (24h) = " + quantity.toFixed(2) + " PT";
           document.querySelector("#vol_eth").innerText = "Volume (24h) = " + amount.toFixed(5) + " ETH";
         }
       }
