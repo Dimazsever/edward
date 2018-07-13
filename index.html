@@ -65,10 +65,9 @@
           var now = new Date();
           var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
           var timestamp = startOfDay / 1000;
-          var amount = 0,
-            i = 0;
+          var amount = 0, i = 0;
           while (xhr.response[i].date > timestamp) {
-            amount += parseFloat(arr[i].quantity);
+            amount += parseFloat(xhr.response[i].quantity);
             i++;
           }
           console.log(xhr.response);
