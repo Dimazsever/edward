@@ -33,9 +33,9 @@
     }
 
     #vol_eth {
-      font-size: 40px;
+      font-size: 36px;
       font-family: monospace;
-      color: #09499a
+      color: #104e9c;
     }
   </style>
   <title>Всё будет Ponzi!</title>
@@ -47,7 +47,7 @@
     <p id="buy_price">Загрузка...</p>
     <p id="sell_price"> </p>
     <p id="vol_pt"> </p>
-    <p id="vol_eth">идёт подсчёт...</p>
+    <p id="vol_eth"> </p>
   </div>
   <script>
     var xhr = new XMLHttpRequest();
@@ -60,7 +60,7 @@
         document.querySelector("#buy_price").innerText = buy;
         document.querySelector("#sell_price").innerText = sell;
         document.querySelector("#vol_pt").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
-        get_vol();
+        setTimeout(get_vol, 2000);
       }
     }
     xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
