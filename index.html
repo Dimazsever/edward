@@ -47,6 +47,7 @@
     xhr.responseType = 'json';
     xhr.onload = function() {
       if (this.status == 200) {
+console.log("Hi!");
         var buy = xhr.response.buy_price ? "Buy Price " + xhr.response.buy_price + " ETH" : "no price";
         var sell = xhr.response.sell_price ? "Sell Price " + xhr.response.sell_price + " ETH" : "no price";
         document.querySelector("#buy_price").innerText = buy;
