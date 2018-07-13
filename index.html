@@ -47,18 +47,27 @@
     xhr.responseType = 'json';
     xhr.onload = function() {
       if (this.status == 200) {
-console.log("Hi!");
+        console.log("Hi!");
         var buy = xhr.response.buy_price ? "Buy Price " + xhr.response.buy_price + " ETH" : "no price";
         var sell = xhr.response.sell_price ? "Sell Price " + xhr.response.sell_price + " ETH" : "no price";
         document.querySelector("#buy_price").innerText = buy;
         document.querySelector("#sell_price").innerText = sell;
         document.querySelector("#vol").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
-        //get_vol();
+        get_vol();
       }
     }
     xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
     xhr.send();
 
+    function get_vol() {
+      xhr.onload = function() {
+        if (this.status == 200) {
+          console.log(xhr.response);
+        }
+      }
+      xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
+      xhr.send();
+    }
   </script>
 </body>
 
