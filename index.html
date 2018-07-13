@@ -26,10 +26,16 @@
       color: #c10515
     }
 
-    #vol {
+    #vol_pt {
       font-size: 40px;
       font-family: monospace;
       color: #166cda
+    }
+
+    #vol_eth {
+      font-size: 40px;
+      font-family: monospace;
+      color: #09499a
     }
   </style>
   <title>Всё будет Ponzi!</title>
@@ -40,7 +46,8 @@
     <h1>PT Ticker</h1>
     <p id="buy_price">Загрузка...</p>
     <p id="sell_price"> </p>
-    <p id="vol"> </p>
+    <p id="vol_pt"> </p>
+    <p id="vol_eth">идёт подсчёт...</p>
   </div>
   <script>
     var xhr = new XMLHttpRequest();
@@ -52,7 +59,7 @@
         var sell = xhr.response.sell_price ? "Sell Price " + xhr.response.sell_price + " ETH" : "no price";
         document.querySelector("#buy_price").innerText = buy;
         document.querySelector("#sell_price").innerText = sell;
-        document.querySelector("#vol").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
+        document.querySelector("#vol_pt").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
         get_vol();
       }
     }
@@ -65,12 +72,13 @@
           var now = new Date();
           var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
           var timestamp = startOfDay / 1000;
-          var amount = 0, i = 0;
+          var amount = 0,
+            i = 0;
           while (xhr.response[i].date > timestamp) {
             amount += parseFloat(xhr.response[i].quantity);
             i++;
           }
-          console.log(amount);
+          document.querySelector("#vol_eth").innerText = "Volume (24h) = " + amount + " ETH";
         }
       }
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
