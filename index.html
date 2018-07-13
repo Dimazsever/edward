@@ -60,6 +60,7 @@
         document.querySelector("#buy_price").innerText = buy;
         document.querySelector("#sell_price").innerText = sell;
         document.querySelector("#vol_pt").innerText = "Volume (24h) = " + parseFloat(xhr.response.vol).toFixed(2) + " PT";
+        document.querySelector("#vol_eth").innerText = "идёт подсчёт...";
         setTimeout(get_vol, 2000);
       }
     }
@@ -78,7 +79,7 @@
             amount += parseFloat(xhr.response[i].amount);
             i++;
           }
-          document.querySelector("#vol_eth").innerHTML = "Volume (24h) = " + amount.toFixed(5) + " ETH";
+          document.querySelector("#vol_eth").innerText = "Volume (24h) = " + amount.toFixed(5) + " ETH";
         }
       }
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
