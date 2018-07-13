@@ -62,6 +62,15 @@
     function get_vol() {
       xhr.onload = function() {
         if (this.status == 200) {
+          var now = new Date();
+          var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          var timestamp = startOfDay / 1000;
+          var amount = 0,
+            i = 0;
+          while (xhr.response[i].date > timestamp) {
+            amount += parseFloat(arr[i].quantity);
+            i++;
+          }
           console.log(xhr.response);
         }
       }
