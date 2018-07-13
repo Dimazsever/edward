@@ -6,7 +6,7 @@
   <style type="text/css">
     div {
       text-align: center;
-      padding: 10%
+      padding: 40px
     }
 
     h1 {
@@ -75,7 +75,7 @@
           var amount = 0,
             i = 0;
           while (xhr.response[i].date > timestamp) {
-            amount += parseFloat(xhr.response[i].quantity);
+            amount += parseFloat(xhr.response[i].amount);
             i++;
           }
           document.querySelector("#vol_eth").innerText = "Volume (24h) = " + amount + " ETH";
