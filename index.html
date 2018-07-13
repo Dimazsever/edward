@@ -47,7 +47,7 @@
     <p id="buy_price">Загрузка...</p>
     <p id="sell_price"> </p>
     <p id="vol_pt"> </p>
-    <p id="vol_eth"> </p>
+    <p id="vol_eth">...</p>
   </div>
   <script>
     var xhr = new XMLHttpRequest();
@@ -78,7 +78,7 @@
             amount += parseFloat(xhr.response[i].amount);
             i++;
           }
-          document.querySelector("#vol_eth").innerHTML = "Volume (24h) = " + amount + " ETH";
+          document.querySelector("#vol_eth").innerHTML = "Volume (24h) = " + amount.toFixed(5) + " ETH";
         }
       }
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
