@@ -88,7 +88,9 @@
             amount += parseFloat(xhr.response[i].amount);
             i++;
           }
-          document.querySelector("#average_price").innerText = "Average Price (24h) = " + (amount / quantity).toFixed(6) + " ETH";
+          var average = (amount / quantity).toString();
+          average.slice(0, (average.indexOf(".")) + 7);
+          document.querySelector("#average_price").innerText = "Average Price (24h) = " + average + " ETH";
           document.querySelector("#vol_pt").innerText = "Volume (24h) = " + quantity.toFixed(2) + " PT";
           document.querySelector("#vol_eth").innerText = "Volume (24h) = " + amount.toFixed(5) + " ETH";
         }
