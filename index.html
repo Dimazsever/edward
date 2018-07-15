@@ -76,7 +76,7 @@
           var quantity = 0,
             amount = 0,
             i = 0;
-          while (xhr.response[i].date > timestamp) {
+          while (xhr.response[i].date >= timestamp) {
             quantity += parseFloat(xhr.response[i].quantity);
             amount += parseFloat(xhr.response[i].amount);
             i++;
