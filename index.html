@@ -66,7 +66,7 @@
         var sell = xhr.response.sell_price ? "Sell Price " + xhr.response.sell_price + " ETH" : "no price";
         document.querySelector("#buy_price").innerText = buy;
         document.querySelector("#sell_price").innerText = sell;
-        document.querySelector("#vol_pt").innerText = "идёт подсчёт...";
+        document.querySelector("#average_price").innerText = "идёт подсчёт...";
         get_vol();
       }
     }
