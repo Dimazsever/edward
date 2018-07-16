@@ -117,7 +117,7 @@
     }
     document.querySelector("button").addEventListener('click', function() {
       var now = new Date();
-      if (now.getTime() > (last + 10000)) {
+      if (now.getTime() < (last + 10000)) {
         alert("Обновлять можно каждые 10 секунд!");
       } else {
         document.body.style.opacity = 0.2;
