@@ -113,7 +113,10 @@
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
       xhr.send();
     }
-    document.querySelector("button").addEventListener('click', go);
+    document.querySelector("button").addEventListener('click', function() {
+      document.body.style.opacity = 0.2;
+      go();
+    });
   </script>
 </body>
 
