@@ -6,7 +6,7 @@
   <style type="text/css">
     div {
       text-align: center;
-      padding: 40px
+      margin: 10px
     }
 
     h1 {
@@ -41,7 +41,18 @@
     #vol_eth {
       font-size: 30px;
       font-family: monospace;
+      color: #104e9c
+    }
+
+    button {
+      display: none;
+      font-size: 36px;
+      font-family: serif;
       color: #104e9c;
+      background: #d6d6d6;
+      color: #232323;
+      border: 1px solid #afafaf;
+      cursor: pointer
     }
   </style>
   <title>Всё будет Ponzi!</title>
@@ -55,6 +66,7 @@
     <p id="average_price"> </p>
     <p id="vol_pt"> </p>
     <p id="vol_eth"> </p>
+    <button>Обновить</button>
   </div>
   <script>
     var xhr = new XMLHttpRequest();
@@ -91,6 +103,7 @@
           document.querySelector("#average_price").innerText = "Average Price (24h) = " + (amount / quantity).toFixed(6) + " ETH";
           document.querySelector("#vol_pt").innerText = "Volume (24h) = " + quantity.toFixed(2) + " PT";
           document.querySelector("#vol_eth").innerText = "Volume (24h) = " + amount.toFixed(5) + " ETH";
+          document.querySelector("button").style.display = "unset";
         }
       }
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
