@@ -82,8 +82,12 @@
         get_vol();
       }
     }
-    xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
-    xhr.send();
+
+    function go() {
+      xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
+      xhr.send();
+    }
+    go();
 
     function get_vol() {
       xhr.onload = function() {
@@ -109,11 +113,7 @@
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
       xhr.send();
     }
-
-    document.querySelector("button").addEventListener('click', function() {
-      xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
-      xhr.send();
-    });
+    document.querySelector("button").addEventListener('click', go);
   </script>
 </body>
 
