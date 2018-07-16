@@ -109,6 +109,11 @@
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
       xhr.send();
     }
+
+    document.querySelector("button").addEventListener('click', function() {
+      xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
+      xhr.send();
+    });
   </script>
 </body>
 
