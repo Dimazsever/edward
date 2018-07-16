@@ -92,9 +92,10 @@
     function get_vol() {
       xhr.onload = function() {
         if (this.status == 200) {
-          now = new Date();
+          var now = new Date();
           //var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
           //var timestamp = startOfDay / 1000;
+          last = now.getTime();
           var timestamp = (now.getTime() / 1000) - 86400;
           var quantity = 0,
             amount = 0,
@@ -116,7 +117,7 @@
     }
     document.querySelector("button").addEventListener('click', function() {
       var timestamp = now.getTime();
-      if (timestamp > (timestamp + 10000)) {
+      if (timestamp > (last + 10000)) {
         alert("Обновлять можно каждые 10 секунд!");
       } else {
         document.body.style.opacity = 0.2;
