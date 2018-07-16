@@ -108,6 +108,7 @@
           document.querySelector("#vol_pt").innerText = "Volume (24h) = " + quantity.toFixed(2) + " PT";
           document.querySelector("#vol_eth").innerText = "Volume (24h) = " + amount.toFixed(5) + " ETH";
           document.querySelector("button").style.display = "unset";
+          document.body.style.opacity = 1;
         }
       }
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/trades/", true);
