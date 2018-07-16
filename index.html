@@ -71,19 +71,19 @@
   <script>
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
-    xhr.onload = function() {
-      if (this.status == 200) {
-        console.log("Hi!");
-        var buy = xhr.response.buy_price ? "Buy Price " + xhr.response.buy_price + " ETH" : "no price";
-        var sell = xhr.response.sell_price ? "Sell Price " + xhr.response.sell_price + " ETH" : "no price";
-        document.querySelector("#buy_price").innerText = buy;
-        document.querySelector("#sell_price").innerText = sell;
-        document.querySelector("#average_price").innerText = "идёт подсчёт...";
-        get_vol();
-      }
-    }
 
     function go() {
+      xhr.onload = function() {
+        if (this.status == 200) {
+          console.log("Hi!");
+          var buy = xhr.response.buy_price ? "Buy Price " + xhr.response.buy_price + " ETH" : "no price";
+          var sell = xhr.response.sell_price ? "Sell Price " + xhr.response.sell_price + " ETH" : "no price";
+          document.querySelector("#buy_price").innerText = buy;
+          document.querySelector("#sell_price").innerText = sell;
+          document.querySelector("#average_price").innerText = "идёт подсчёт...";
+          get_vol();
+        }
+      }
       xhr.open("GET", "https://ponzitrust.exchange/api/v1/ticker/", true);
       xhr.send();
     }
