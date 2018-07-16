@@ -116,9 +116,12 @@
     }
     document.querySelector("button").addEventListener('click', function() {
       var timestamp = now.getTime();
-      if (timestamp > (timestamp + 10000)) alert("Обновлять можно каждые 10 секунд!");
-      document.body.style.opacity = 0.2;
-      go();
+      if (timestamp > (timestamp + 10000)) {
+        alert("Обновлять можно каждые 10 секунд!");
+      } else {
+        document.body.style.opacity = 0.2;
+        go();
+      }
     });
   </script>
 </body>
