@@ -1,22 +1,41 @@
 <!DOCTYPE HTML>
 <html>
- <head>
-  <meta charset="utf-8">
-  <title>Тег DIV</title>
-  <style type="text/css">
 
-  </style> 
- </head>
- <body>
-<audio controls>
-    <source src="audio_2018-07-15_01-19-58.ogg" type="audio/ogg; codecs=vorbis">
-  </audio>
-<a href="tel:+79300880005">
-    Call number!
-</a>
-<script>
-alert(navigator.vendor);
-</script>
+<head>
+    <meta charset="utf-8">
+    <title>Тест</title>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js">
+    </script>
+</head>
 
- </body>
+<body>
+    <p>coordinates</p>
+    <script>
+        window.onload = function() {
+            var el = document.querySelector("p");
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDQCxOuEDr2aDyMiHBknY-8g7QlJPqzpaY",
+                authDomain: "sincere-chariot-119013.firebaseapp.com",
+                databaseURL: "https://sincere-chariot-119013.firebaseio.com",
+                projectId: "sincere-chariot-119013",
+                storageBucket: "sincere-chariot-119013.appspot.com",
+                messagingSenderId: "324332663724"
+            };
+            firebase.initializeApp(config);
+            var db = firebase.firestore();
+
+            var docRef = db.collection("samples").doc("4Q9MYU4mjLGSDCAsqNUE");
+
+            docRef.onSnapshot(function(doc) {
+                //console.log("Current data: ", doc.data());
+                el.innerText = "x: " + doc.data().coordinates.x + ", y: " + doc.data().coordinates.y;
+            });
+
+        }
+    </script>
+</body>
+
 </html>
