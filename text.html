@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
 </head>
 <body style="margin: 0; text-align: center">
@@ -23,7 +24,7 @@ db.settings({
 var docRef = db.collection("AliExpress").doc("male");
 docRef.get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        console.log(doc.data);
+        console.log(doc.data());
     });
 });
 }
