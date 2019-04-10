@@ -1,33 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
 </head>
 <body style="margin: 0; text-align: center">
-<script>
-window.onload = function() {
-firebase.initializeApp({
-  apiKey: 'AIzaSyDQCxOuEDr2aDyMiHBknY-8g7QlJPqzpaY',
-  authDomain: 'sincere-chariot-119013.firebaseapp.com',
-  projectId: 'sincere-chariot-119013'
-});
-
-// Initialize Cloud Firestore through Firebase
-var db = firebase.firestore();
-
-// Disable deprecated features
-db.settings({
-  timestampsInSnapshots: true
-});
-
-var docRef = db.collection("AliExpress").doc("male");
-docRef.get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-    });
-});
-}
-</script>
+<audio controls>
+  <source src="name.ogg" type="audio/ogg">
+  <source src="name.mp3" type="audio/mpeg">
+  <a href="sounds/name.mp3">Скачать name.mp3</a>
+</audio>
 </body>
 </html>
