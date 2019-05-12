@@ -9,14 +9,155 @@
  </head>  
  <body> 
 
-  <p>Код программы</p>
+ <canvas id="a" width="800" height="600"></canvas>
 
 <script>
-var output = document.querySelector('p');
-function handleOrientation(e) {
-output.innerHTML  = "beta : " + e.beta + "\n";
+var options = {
+    amount: 10,
+    gravity: 0.3,
+    jump: -0.7,
+
+    minSpeedX: -5,
+    maxSpeedX: 5,
+
+    minSpeedY: 1,
+    maxSpeedY: 1,
+
+    minSpeedRotate: 0,
+    maxSpeedRotate: 0,
+
+    minScaleX: 1,
+    maxScaleX: 1,
+
+    minScaleY: 1,
+    maxScaleY: 1,
+
+    minAngle: 0,
+    maxAngle: 0
+};
+
+function preload() {
+    'use strict';
+    
+    this.options = options;
+    
+    this.game.time.advancedTiming = true;
+
+    this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.scale.pageAlignHorizontally = true;
+    this.scale.pageAlignVertically = true;
+    this.scale.refresh();
+    
+    this.game.load.baseURL = 'http://examples.phaser.io/assets/';
+    this.game.load.crossOrigin = 'anonymous';
+    this.game.load.image('phaser-dude', 'sprites/phaser-dude.png');
+    
+    this.options.speedX = (this.options.minSpeedX === this.options.maxSpeedX) ? this.options.minSpeedX : undefined;
+    this.options.speedY = (this.options.minSpeedY === this.options.maxSpeedY) ? this.options.minSpeedY : undefined;
+    this.options.speedRotate = (this.options.minSpeedRotate === this.options.maxSpeedRotate) ? this.options.minSpeedRotate : undefined;
+
+    this.options.scaleX = (this.options.minScaleX === this.options.maxScaleX) ? this.options.minScaleX : undefined;
+    this.options.scaleY = (this.options.minScaleY === this.options.maxScaleY) ? this.options.minScaleY : undefined;
+
+    this.options.angle = (this.options.minAngle === this.options.maxAngle) ? this.options.minAngle : undefined;
+    
+    this._add = function() {
+        this.sprites.createMultiple(this.options.amount, 'phaser-dude', 0);
+        this.sprites.forEach(function(sprite) {
+            if (!sprite.exists) {
+                sprite.originalX = this.game.input.mousePointer.x;
+                sprite.originalY = this.game.input.mousePointer.y;
+                this._recycle(sprite);
+                sprite.exists = true;
+            }
+        }, this);
+    };
+    this._recycle = function(sprite) {
+        sprite.x = sprite.originalX;
+        sprite.y = sprite.originalY;
+        sprite.speedX = this.options.speedX || this.game.rnd.realInRange(
+            this.options.minSpeedX,
+            this.options.maxSpeedX
+        );
+        sprite.speedY = this.options.speedY || this.game.rnd.realInRange(
+            this.options.minSpeedY,
+            this.options.maxSpeedY
+        );
+        sprite.speedRotate = this.options.speedRotate || this.game.rnd.realInRange(
+            this.options.minSpeedRotate,
+            this.options.maxSpeedRotate
+        );
+        sprite.scale.setTo(
+            this.options.scaleX || this.game.rnd.realInRange(
+                this.options.minScaleX,
+                this.options.maxScaleX
+            ),
+            this.options.scaleY || this.game.rnd.realInRange(
+                this.options.minScaleY,
+                this.options.maxScaleY
+            )
+        );
+        sprite.angle = this.options.angle || this.game.rnd.integerInRange(
+            this.options.minAngle,
+            this.options.maxAngle
+        );
+    };
 }
-window.addEventListener('deviceorientation', handleOrientation);
+
+function create() {
+    'use strict';
+    
+    this._adding = false;
+    this.game.input.onDown.add(function() {
+        this._adding = true;
+    }, this);
+    this.game.input.onUp.add(function() {
+        this._adding = false;
+    }, this);
+    this.sprites = this.game.add.group();
+}
+
+function update() {
+    'use strict';
+    
+    if (this._adding) {
+        this._add();
+    }
+    this.sprites.forEach(function(sprite) {
+        sprite.x += sprite.speedX;
+        sprite.y += sprite.speedY;
+        sprite.speedY += this.options.gravity;
+
+        if (sprite.x < 0) {
+            sprite.speedX *= -1;
+            sprite.x = 0;
+        } else if (sprite.x > this.game.width) {
+            sprite.speedX *= -1;
+            sprite.x = this.game.width;
+        }
+
+        if (sprite.y < 0) {
+            sprite.speedY *= -1;
+            sprite.y = 0;
+        } else if (sprite.y > this.game.height) {
+            sprite.speedY *= this.options.jump;
+            if (Math.abs(sprite.speedY) < 2) {
+                this._recycle(sprite);
+            } else {
+                sprite.y = this.game.height;
+            }
+        }
+
+        sprite.angle += sprite.speedRotate;
+    }, this);
+}
+
+function render() {
+    'use strict';
+    
+    this.game.debug.text('fps: ' + this.game.time.fps, 0, 20, '#ffff00');
+    this.game.debug.text('sprites: ' + this.sprites.length, 0, 40, '#00ff00');
+}
 </script>
  </body>
 </html>
