@@ -3,7 +3,7 @@
  <head>
   <meta charset="utf-8">
   <title>Gena</title>
-  <script src="phaser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/phaser/2.6.2/phaser.min.js"></script>
   <style type="text/css">
    p {font-size: 36pt}
   </style>
@@ -13,6 +13,7 @@
  <canvas width="800" height="600"></canvas>
 
 <script>
+ window.onload = function(){
 
 var options = {
     amount: 10,
@@ -160,6 +161,7 @@ function render() {
     this.game.debug.text('fps: ' + this.game.time.fps, 0, 20, '#ffff00');
     this.game.debug.text('sprites: ' + this.sprites.length, 0, 40, '#00ff00');
 }
+ }
 </script>
  </body>
 </html>
