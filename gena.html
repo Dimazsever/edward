@@ -50,9 +50,9 @@ function preload() {
     this.scale.pageAlignVertically = true;
     this.scale.refresh();
     
-    this.game.load.baseURL = 'http://examples.phaser.io/assets/';
-    this.game.load.crossOrigin = 'anonymous';
-    this.game.load.image('phaser-dude', 'sprites/phaser-dude.png');
+    //this.game.load.baseURL = 'http://examples.phaser.io/assets/';
+    //this.game.load.crossOrigin = 'anonymous';
+    this.game.load.image('phaser-dude', 'phaser-dude.png');
     
     this.options.speedX = (this.options.minSpeedX === this.options.maxSpeedX) ? this.options.minSpeedX : undefined;
     this.options.speedY = (this.options.minSpeedY === this.options.maxSpeedY) ? this.options.minSpeedY : undefined;
