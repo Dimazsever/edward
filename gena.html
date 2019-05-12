@@ -14,6 +14,15 @@
 
 <script>
  window.onload = function(){
+/**
+ * Generated from the Phaser Sandbox
+ *
+ * //phaser.io/sandbox/Pjdxyqzl
+ *
+ * This source requires Phaser 2.6.2
+ */
+
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
 
 var options = {
     amount: 10,
@@ -51,9 +60,9 @@ function preload() {
     this.scale.pageAlignVertically = true;
     this.scale.refresh();
     
-    //this.game.load.baseURL = 'http://examples.phaser.io/assets/';
-    //this.game.load.crossOrigin = 'anonymous';
-    this.game.load.image('phaser-dude', 'phaser-dude.png');
+    this.game.load.baseURL = 'http://examples.phaser.io/assets/';
+    this.game.load.crossOrigin = 'anonymous';
+    this.game.load.image('phaser-dude', 'sprites/phaser-dude.png');
     
     this.options.speedX = (this.options.minSpeedX === this.options.maxSpeedX) ? this.options.minSpeedX : undefined;
     this.options.speedY = (this.options.minSpeedY === this.options.maxSpeedY) ? this.options.minSpeedY : undefined;
@@ -161,6 +170,7 @@ function render() {
     this.game.debug.text('fps: ' + this.game.time.fps, 0, 20, '#ffff00');
     this.game.debug.text('sprites: ' + this.sprites.length, 0, 40, '#00ff00');
 }
+
  }
 </script>
  </body>
