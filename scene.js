@@ -20,15 +20,6 @@ var createScene = function(){
 	//box
 	var box = loader.addMeshTask("box", "", "", "parallel_bars.obj");
 	
-	loader.onFinish = function(tasks) {
-        console.log(scene.meshes.length);
-        var sphere = scene.meshes[0];
-        console.log(sphere);
-
-        engine.runRenderLoop(function () {
-            scene.render();
-        });
-    };
     // Create a basic light, aiming 0, 1, 0 - meaning, to the sky
     var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
 	light.intensity = 0.8;
