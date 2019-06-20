@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function(event) {
 // Get the canvas DOM element
 var canvas = document.getElementById('renderCanvas');
 // Load the 3D engine
@@ -32,4 +33,5 @@ engine.runRenderLoop(function(){
 // the canvas/window resize event handler
 window.addEventListener('resize', function(){
     engine.resize();
+});
 });
