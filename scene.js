@@ -17,12 +17,15 @@ var createScene = function(){
     //camera.attachControl(canvas, false);
     // Create a basic light, aiming 0, 1, 0 - meaning, to the sky
     var light = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -0.5, -1.0), scene);
-    // Create a built-in "sphere" shape; its constructor takes 6 params: name, segment, diameter, scene, updatable, sideOrientation
-    
-    //var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene, false, BABYLON.Mesh.FRONTSIDE);
-    // Move the sphere upward 1/2 of its height
-    //sphere.position.y = 1;
-    BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene, function(scene){
+
+    //BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene, function(scene){
+    BABYLON.SceneLoader.ImportMesh("", "", "parallel_bars.obj", scene, function (newMeshes) {
+        var bars = newMeshes[0];
+        var angle = 0.01;
+    var earthAxis = new BABYLON.Vector3(Math.sin(0 * Math.PI/180), Math.cos(0 * Math.PI/180), 0);
+    scene.registerBeforeRender(function() {
+        bars.rotate(earthAxis, angle, BABYLON.Space.WORLD);
+    })
         scene.createDefaultCamera(true, true, true);
         // run the render loop
         engine.runRenderLoop(function(){
