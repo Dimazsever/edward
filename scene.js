@@ -9,6 +9,7 @@ var engine = new BABYLON.Engine(canvas, true, {preserveDrawingBuffer: true, sten
 var createScene = function(){
     // Create a basic BJS Scene object
     var scene = new BABYLON.Scene(engine);
+    scene.createDefaultCamera(true, true, true);
     // Create a FreeCamera, and set its position to {x: 0, y: 5, z: -10}
     //var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), scene);
     // Target the camera to scene origin
@@ -22,9 +23,7 @@ var createScene = function(){
     //var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene, false, BABYLON.Mesh.FRONTSIDE);
     // Move the sphere upward 1/2 of its height
     //sphere.position.y = 1;
-    BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene, function(scene){
-        scene.createDefaultCamera(true, true, true);
-    });
+    BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene);
     // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
     var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
     // Return the created scene
