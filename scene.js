@@ -6,7 +6,7 @@ canvas.height = "680";
 // Load the 3D engine
 var engine = new BABYLON.Engine(canvas, true, {preserveDrawingBuffer: true, stencil: true});
 // CreateScene function that creates and return the scene
-var createScene = function() {
+var delayCreateScene = function() {
 	var scene = new BABYLON.Scene(engine);
 	
     //var box = BABYLON.MeshBuilder.CreateBox("box", {});
