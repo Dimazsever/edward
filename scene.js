@@ -24,10 +24,6 @@ var createScene = function(){
     //sphere.position.y = 1;
     BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene, function(scene){
         scene.createDefaultCamera(true, true, true);
-        // run the render loop
-        engine.runRenderLoop(function(){
-        scene.render();
-    });
     });
     // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
     var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
@@ -36,7 +32,10 @@ var createScene = function(){
 }
 // call the createScene function
 var scene = createScene();
-
+// run the render loop
+        engine.runRenderLoop(function(){
+        scene.render();
+    });
 // the canvas/window resize event handler
 window.addEventListener('resize', function(){
     engine.resize();
