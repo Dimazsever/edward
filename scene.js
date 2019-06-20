@@ -21,7 +21,7 @@ var delayCreateScene = function() {
     return scene;
 };
 // call the createScene function
-var scene = createScene();
+var scene = delayCreateScene();
 // run the render loop
 engine.runRenderLoop(function(){
     scene.render();
