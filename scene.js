@@ -14,7 +14,7 @@ var createScene = function() {
     var light = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -0.5, -1.0), scene);
     var ground = BABYLON.MeshBuilder.CreateGround("gd", {width: 6, height: 6, subdivisions: 4}, scene);
 
-    BABYLON.SceneLoader.Append("https://dimazsever.github.io/edward/", "parallel_bars.obj", scene, function (scene) {
+    BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene, function (scene) {
     scene.createDefaultCamera(true, true, true);
     });
     
