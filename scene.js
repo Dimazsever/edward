@@ -29,8 +29,15 @@ var createScene = function(){
         scene.render();
         });
     });
+    
     // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
     var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
+    
+    var angle = 0.01;
+    var earthAxis = new BABYLON.Vector3(Math.sin(3 * Math.PI/180), Math.cos(3 * Math.PI/180), 0);
+    scene.registerBeforeRender(function() {
+        ground.rotate(earthAxis, angle, BABYLON.Space.WORLD);
+    })
     // Return the created scene
     return scene;
 }
