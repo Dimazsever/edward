@@ -34,7 +34,7 @@ var createScene = function(){
     var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
     
     var angle = 0.01;
-    var earthAxis = new BABYLON.Vector3(Math.sin(3 * Math.PI/180), Math.cos(3 * Math.PI/180), 0);
+    var earthAxis = new BABYLON.Vector3(Math.sin(0 * Math.PI/180), Math.cos(0 * Math.PI/180), 0);
     scene.registerBeforeRender(function() {
         ground.rotate(earthAxis, angle, BABYLON.Space.WORLD);
     })
