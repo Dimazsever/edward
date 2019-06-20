@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 // Get the canvas DOM element
 var canvas = document.getElementById('renderCanvas');
-canvas.width = 1200;
-canvas.height = 720;
+canvas.width = 720;
+canvas.height = 1200;
 // Load the 3D engine
 var engine = new BABYLON.Engine(canvas, true, {preserveDrawingBuffer: true, stencil: true});
 // CreateScene function that creates and return the scene
