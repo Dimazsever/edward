@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 // Get the canvas DOM element
 var canvas = document.getElementById('renderCanvas');
-canvas.width = 1280;
-canvas.height = 760;
+canvas.width = 1200;
+canvas.height = 720;
 // Load the 3D engine
 var engine = new BABYLON.Engine(canvas, true, {preserveDrawingBuffer: true, stencil: true});
 // CreateScene function that creates and return the scene
@@ -18,9 +18,11 @@ var createScene = function(){
     // Create a basic light, aiming 0, 1, 0 - meaning, to the sky
     var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
     // Create a built-in "sphere" shape; its constructor takes 6 params: name, segment, diameter, scene, updatable, sideOrientation
-    var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene, false, BABYLON.Mesh.FRONTSIDE);
+    
+    //var sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene, false, BABYLON.Mesh.FRONTSIDE);
     // Move the sphere upward 1/2 of its height
-    sphere.position.y = 1;
+    //sphere.position.y = 1;
+    BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene);
     // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
     var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
     // Return the created scene
