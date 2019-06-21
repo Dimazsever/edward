@@ -36,11 +36,9 @@ var createScene = function(){
     // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
     var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
     
-    var angle = 0.01;
-    var earthAxis = new BABYLON.Vector3(Math.sin(0 * Math.PI/180), Math.cos(0 * Math.PI/180), 0);
-    scene.registerBeforeRender(function() {
-        ground.rotate(earthAxis, angle, BABYLON.Space.WORLD);
-    })
+    scene.enablePhysics();
+    bars.physicsImpostor = new BABYLON.PhysicsImpostor(bars, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 1, restitution: 0.9 }, scene);
+    ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.9 }, scene);
     // Return the created scene
     return scene;
 }
