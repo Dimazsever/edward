@@ -20,6 +20,7 @@ var createScene = function(){
 
     //BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene, function(scene){
     BABYLON.SceneLoader.ImportMesh("", "", "parallel_bars.obj", scene, function (newMeshes) {
+        scene.enablePhysics();
         var bars = newMeshes[0];
         bars.physicsImpostor = new BABYLON.PhysicsImpostor(bars, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 1, restitution: 0.9 }, scene);
         var angle = 0.01;
@@ -37,7 +38,6 @@ var createScene = function(){
     // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
     var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
     
-    scene.enablePhysics();
     
     //ground.physicsImpostor = new BABYLON.PhysicsImpostor(ground, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0.9 }, scene);
     // Return the created scene
