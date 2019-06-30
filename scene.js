@@ -7,30 +7,26 @@ canvas.height = 800;
 var engine = new BABYLON.Engine(canvas, true, {preserveDrawingBuffer: true, stencil: true});
 // CreateScene function that creates and return the scene
 var createScene = function(){
-    // Create a basic BJS Scene object
     var scene = new BABYLON.Scene(engine);
-    // Create a FreeCamera, and set its position to {x: 0, y: 5, z: -10}
-    //var camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), scene);
-    // Target the camera to scene origin
-    //camera.setTarget(BABYLON.Vector3.Zero());
-    // Attach the camera to the canvas
-    //camera.attachControl(canvas, false);
-    // Create a basic light, aiming 0, 1, 0 - meaning, to the sky
-    var light = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -0.5, -1.0), scene);
 
-    //BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene, function(scene){
+    //Adding a light
+    var light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(20, 20, 100), scene);
+
+    //Adding an Arc Rotate Camera
+    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, BABYLON.Vector3.Zero(), scene);
+    camera.attachControl(canvas, false);
+
+    // The first parameter can be used to specify which mesh to import. Here we import all meshes
     BABYLON.SceneLoader.ImportMesh("", "", "sls_amg.obj", scene, function (newMeshes) {
-        var bars = newMeshes[0];
-        var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);
-        myMaterial.diffuseColor = new BABYLON.Color3(0.8, 0.34, 0.04);
-        bars.material = myMaterial;
-        //myMaterial.wireframe = true;
-        bars.physicsImpostor = new BABYLON.PhysicsImpostor(bars, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 1, restitution: 0.9 }, scene);
-        var angle = 0.01;
-    /*var earthAxis = new BABYLON.Vector3(Math.sin(0 * Math.PI/180), Math.cos(0 * Math.PI/180), 0);
-    scene.registerBeforeRender(function() {
-        bars.rotate(earthAxis, angle, BABYLON.Space.WORLD);
-    })*/
+        // Set the target of the camera to the first imported mesh
+        camera.target = newMeshes[0];
+    });
+
+    // Move the light with the camera
+    scene.registerBeforeRender(function () {
+        light.position = camera.position;
+    });
+
         scene.createDefaultCamera(true, true, true);
         // run the render loop
         engine.runRenderLoop(function(){
