@@ -19,12 +19,12 @@ var createScene = function(){
     var light = new BABYLON.DirectionalLight("dir01", new BABYLON.Vector3(0, -0.5, -1.0), scene);
 
     //BABYLON.SceneLoader.Append("", "parallel_bars.obj", scene, function(scene){
-    BABYLON.SceneLoader.ImportMesh("", "", "parallel_bars.obj", scene, function (newMeshes) {
+    BABYLON.SceneLoader.ImportMesh("", "", "sls_amg.obj", scene, function (newMeshes) {
         var bars = newMeshes[0];
         var myMaterial = new BABYLON.StandardMaterial("myMaterial", scene);
         myMaterial.diffuseColor = new BABYLON.Color3(0.8, 0.34, 0.04);
         bars.material = myMaterial;
-        myMaterial.wireframe = true;
+        //myMaterial.wireframe = true;
         bars.physicsImpostor = new BABYLON.PhysicsImpostor(bars, BABYLON.PhysicsImpostor.SphereImpostor, { mass: 1, restitution: 0.9 }, scene);
         var angle = 0.01;
     /*var earthAxis = new BABYLON.Vector3(Math.sin(0 * Math.PI/180), Math.cos(0 * Math.PI/180), 0);
