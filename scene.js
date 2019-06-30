@@ -17,7 +17,7 @@ var createScene = function(){
     camera.attachControl(canvas, false);
 
     // The first parameter can be used to specify which mesh to import. Here we import all meshes
-    BABYLON.SceneLoader.ImportMesh("", "", "parallel_bars.obj", scene, function (newMeshes) {
+    BABYLON.SceneLoader.ImportMesh("", "", "sls_amg.obj", scene, function (newMeshes) {
         // Set the target of the camera to the first imported mesh
         camera.target = newMeshes[0];
     });
