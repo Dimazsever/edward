@@ -3,11 +3,6 @@
  <head>
    <meta charset="utf-8">
   <title>Прозрачный фон</title>
-  <script>
-navigator.getBattery().then(function(battery) {
-   //alert(battery.level);
-});
-  </script>
   <style type="text/css">
    a {
     font-size: 40px;
@@ -18,8 +13,14 @@ navigator.getBattery().then(function(battery) {
   </style>
  </head>
  <body>
-  <video controls width="710" height="538" autoplay muted>
+  <button type="button" onclick="document.querySelector('video').play()">Click Me!</button>
+  <video controls width="710" height="538">
   <source src="90per.mp4" type="video/mp4">
   </video>
+   <script>
+navigator.getBattery().then(function(battery) {
+   //alert(battery.level);
+});
+  </script>
 </body>
 </html>
