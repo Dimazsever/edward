@@ -14,7 +14,7 @@
   </style>
  </head>
  <body>
-  <button type="button" onclick="document.querySelector('video').style.visibility = 'visible'.play()">Click Me!</button>
+  <button type="button">Click Me!</button>
   <video controls width="710" height="538">
   <source src="90per.mp4" type="video/mp4">
   </video>
@@ -22,6 +22,11 @@
 navigator.getBattery().then(function(battery) {
    //alert(battery.level);
 });
+    document.querySelector('button').addEventListener('click', function() {
+    const vid = document.querySelector('video');
+    vid.style.visibility = 'visible';
+    vid.play();
+    });
   </script>
 </body>
 </html>
